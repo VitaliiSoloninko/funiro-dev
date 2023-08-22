@@ -32,6 +32,7 @@
 
 3 Створення іконочного шрифту
 Перед експортом в SVG у Фігма, Меню - Object - Outline stroke (Контур обведення)
+https://iconly.io/tools/svg-convert-stroke-to-fill
 Сайт icomoon.io - IcoMoom App
 --- - New Empty Set - Import Icons
 Очитити кольори - зверху сіру кнопку і корзину

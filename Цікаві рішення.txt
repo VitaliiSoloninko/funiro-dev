@@ -1,0 +1,25 @@
+/* Випадаюче меню 
+Зробити прозорим
+Приховати
+Анімація
+здвинути вниз на 10px
+*/
+
+.menu__sub-list {
+opacity: 0;
+transition: all 0.3s ease 0s;
+transform: translate(0px, 10px);
+visibility: hidden;
+}
+
+
+@media (any-hover: hover) {
+			&:hover {
+				.menu__sub-list {
+					transform: translate(0px, 0px);
+					opacity: 1;
+					visibility: visible;
+					pointer-events: auto;
+				}
+			}
+		}
