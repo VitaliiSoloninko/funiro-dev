@@ -3,7 +3,6 @@ import { isMobile } from "./functions.js";
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
 import { removeClasses } from "./functions.js";
-// import { spollers } from "./functions.js";
 
 
 
