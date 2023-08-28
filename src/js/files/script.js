@@ -4,8 +4,6 @@ import { isMobile } from "./functions.js";
 import { flsModules } from "./modules.js";
 import { removeClasses } from "./functions.js";
 
-
-
 window.onload = function () {
 	document.addEventListener("click", documentActions);
 
