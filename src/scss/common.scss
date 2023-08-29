@@ -1,1 +1,9 @@
 // Заголовки, загальні БЕМ блоки та інше...
+// ._footer-title
+
+._footer-title {
+	@include adaptiveValue("font-size", 24, 20);
+	line-height: math.div(29, 24);
+	color: #000;
+	font-weight: 700;
+}
