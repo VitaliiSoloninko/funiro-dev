@@ -1,3 +1,158 @@
 //====================================================================================================
+.page {
+	// .page__main-slider
+
+	&__main-slider {
+		background-color: #fcf8f3;
+	}
+}
+.main-slider {
+	// .main-slider__container
+
+	&__container {
+		position: relative;
+		@media (min-width: $tablet) {
+			&::before {
+				content: "";
+				background-color: #f9f1e7;
+				position: absolute;
+				top: 0;
+				width: 100vw;
+				right: 376px;
+				height: 100%;
+			}
+		}
+	}
+
+	// .main-slider__body
+
+	&__body {
+		@include adaptiveValue("padding-top", 140, 60);
+		position: relative;
+		z-index: 2;
+		@media (min-width: $tablet) {
+			display: flex;
+		}
+	}
+
+	// .main-slider__content
+
+	&__content {
+		flex: 0 0 39.83871%; /* 494/1240 */
+	}
+
+	// .main-slider__slider
+
+	&__slider {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+}
+
+.content-main {
+	position: relative;
+	z-index: 5;
+	padding-right: 15px;
+	padding-left: 15px;
+	@include adaptiveValue("padding-top", 60, 15);
+	@include adaptiveValue("padding-bottom", 60, 15);
+	@media (min-width: $mobile) {
+		@include adaptiveValue("padding", 60, 1);
+		background-color: rgba(255, 255, 255, 0.9);
+		@supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))) {
+			background-color: rgba(255, 255, 255, 0.72);
+			backdrop-filter: blur(31px);
+		}
+	}
+
+	// .content-main__title
+
+	&__title {
+		@include adaptiveValue("font-size", 56, 24);
+		font-weight: 700;
+		line-height: 120%;
+		&:not(:last-child) {
+			margin-bottom: 16px;
+		}
+	}
+
+	// .content-main__text
+
+	&__text {
+		color: $darkGrayColor;
+		@include adaptiveValue("font-size", 20, 16);
+		font-weight: 500;
+		line-height: 150%;
+		&:not(:last-child) {
+			padding-bottom: 48px;
+		}
+	}
+
+	// .content-main__button
+
+	&__button {
+		color: #fff;
+		background-color: $orangeColor;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 150%;
+		padding: 24px;
+		width: 100%;
+	}
+}
+.slider-main {
+	// .slider-main__controls
+
+	&__controls {
+	}
+
+	// .slider-main__body
+
+	&__body {
+	}
+
+	// .slider-main__slide
+
+	&__slide {
+	}
+
+	// .slider-main__image
+
+	&__image {
+	}
+
+	// .slider-main__content
+
+	&__content {
+	}
+
+	// .slider-main__title
+
+	&__title {
+	}
+
+	// .slider-main__text
+
+	&__text {
+	}
+
+	// .slider-main__price
+
+	&__price {
+	}
+}
+.controls-slider-main {
+	// .controls-slider-main__dotts
+
+	&__dotts {
+	}
+
+	// .controls-slider-main__arrows
+
+	&__arrows {
+	}
+}
+.slider-arrows {
+}
 
 //====================================================================================================
