@@ -8,7 +8,6 @@
 	<div class="wrapper">
 		@@include('html/_header.htm',{})
 		<main class="page">
-
 			<section class="page__main-slider main-slider">
 				<div class="main-slider__container __container">
 					<div class="main-slider__body">
@@ -26,15 +25,37 @@
 									<button type="button" class="slider-arrow slider-arrow_next _icon-arrow-down"></button>
 								</div>
 							</div>
-							<div class="slider-main__body _swiper">
-								<div class="slider-main__slide">
-									<div class="slider-main__image _ibg">
-										<img src="@img/main-slider/01.jpg" alt="Image">
+							<div class="slider-main__body main__slider swiper">
+								<div class="swiper-wrapper">
+									<div class="slider-main__slide main__slide swiper-slide">
+										<div class="slider-main__image _ibg">
+											<img src="@img/main-slider/01.jpg" alt="Image">
+										</div>
+										<div class="slider-main__content">
+											<div class="slider-main__title">Bohauss</div>
+											<div class="slider-main__text">Luxury big sofa 2-seat</div>
+											<div class="slider-main__price _icon-arrow-link">Price: 850$</div>
+										</div>
 									</div>
-									<div class="slider-main__content">
-										<div class="slider-main__title">Bohauss</div>
-										<div class="slider-main__text">Luxury big sofa 2-seat</div>
-										<div class="slider-main__price _icon-arrow-link">Rp 17.000.000</div>
+									<div class="slider-main__slide main__slide swiper-slide">
+										<div class="slider-main__image _ibg">
+											<img src="@img/main-slider/02.jpg" alt="Image">
+										</div>
+										<div class="slider-main__content">
+											<div class="slider-main__title">Tufjord</div>
+											<div class="slider-main__text">Help you relax and unwind in bed</div>
+											<div class="slider-main__price _icon-arrow-link">Price: 550$</div>
+										</div>
+									</div>
+									<div class="slider-main__slide main__slide swiper-slide">
+										<div class="slider-main__image _ibg">
+											<img src="@img/main-slider/03.jpg" alt="Image">
+										</div>
+										<div class="slider-main__content">
+											<div class="slider-main__title">Landscrona</div>
+											<div class="slider-main__text">Turns into a comfortable double bed</div>
+											<div class="slider-main__price _icon-arrow-link">Price: 950$</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -42,13 +63,7 @@
 					</div>
 				</div>
 			</section>
-
-
-
-
 		</main>
-		<script src="js/app.min.js"></script>
-
 		@@include('html/_footer.htm',{})
 	</div>
 	@@include('html/_js.htm',{})
