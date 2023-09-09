@@ -79,25 +79,29 @@
 	// .content-main__text
 
 	&__text {
-		color: $darkGrayColor;
+		color: $grayColor;
 		@include adaptiveValue("font-size", 20, 16);
 		font-weight: 500;
 		line-height: 150%;
 		&:not(:last-child) {
-			padding-bottom: 48px;
+			@include adaptiveValue("margin-bottom", 48, 20);
 		}
 	}
 
 	// .content-main__button
 
 	&__button {
-		color: #fff;
-		background-color: $orangeColor;
-		font-size: 20px;
 		font-weight: 600;
-		line-height: 150%;
-		padding: 24px;
+		@include adaptiveValue("min-height", 78, 45);
+		@include adaptiveValue("font-size", 20, 16);
+		background-color: $orangeColor;
+		color: #fff;
 		width: 100%;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #cc865a;
+			}
+		}
 	}
 }
 .slider-main {
@@ -151,8 +155,6 @@
 
 	&__arrows {
 	}
-}
-.slider-arrows {
 }
 
 //====================================================================================================
