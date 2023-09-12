@@ -8,7 +8,6 @@
 }
 .main-slider {
 	// .main-slider__container
-
 	&__container {
 		position: relative;
 		@media (min-width: $tablet) {
@@ -23,9 +22,7 @@
 			}
 		}
 	}
-
 	// .main-slider__body
-
 	&__body {
 		@include adaptiveValue("padding-top", 140, 60);
 		position: relative;
@@ -34,15 +31,11 @@
 			display: flex;
 		}
 	}
-
 	// .main-slider__content
-
 	&__content {
 		flex: 0 0 39.83871%; /* 494/1240 */
 	}
-
 	// .main-slider__slider
-
 	&__slider {
 		flex: 1 1 auto;
 		min-width: 0;
@@ -51,7 +44,6 @@
 		}
 	}
 }
-
 .content-main {
 	position: relative;
 	z-index: 5;
@@ -61,15 +53,13 @@
 	@include adaptiveValue("padding-bottom", 60, 15);
 	@media (min-width: $mobile) {
 		@include adaptiveValue("padding", 60, 1);
-		background-color: rgba(255, 255, 255, 0.9);
+		background-color: rgba(255, 255, 255, 0.8);
 		@supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))) {
 			background-color: rgba(255, 255, 255, 0.72);
 			backdrop-filter: blur(31px);
 		}
 	}
-
 	// .content-main__title
-
 	&__title {
 		@include adaptiveValue("font-size", 56, 24);
 		font-weight: 700;
@@ -78,9 +68,7 @@
 			margin-bottom: 16px;
 		}
 	}
-
 	// .content-main__text
-
 	&__text {
 		color: $grayColor;
 		@include adaptiveValue("font-size", 20, 16);
@@ -90,9 +78,7 @@
 			@include adaptiveValue("margin-bottom", 48, 20);
 		}
 	}
-
 	// .content-main__button
-
 	&__button {
 		font-weight: 600;
 		@include adaptiveValue("min-height", 78, 45);
@@ -109,19 +95,25 @@
 }
 .slider-main {
 	// .slider-main__controls
-
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 	&__controls {
+		align-self: stretch;
 		margin-bottom: 20px;
 	}
-
 	// .slider-main__body
-
 	&__body {
+		overflow: hidden;
+		@media (min-width: $tablet) {
+			@include adaptiveValue("width", 934, 290);
+		}
 	}
 
 	// .slider-main__slide
 
 	&__slide {
+		position: relative;
 	}
 
 	// .slider-main__image
@@ -205,5 +197,10 @@
 	&__arrows {
 	}
 }
-
+.swiper-pagination-bullet {
+	height: 27px;
+	width: 27px;
+	color: #fff;
+	border-radius: 50%;
+}
 //====================================================================================================

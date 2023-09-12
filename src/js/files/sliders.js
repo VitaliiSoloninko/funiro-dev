@@ -8,7 +8,7 @@
 // При необхідності підключаємо додаткові модулі слайдера, вказуючи їх у {} через кому
 // Приклад: { Navigation, Autoplay }
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 /*
 Основні модулі слайдера:
 Navigation, Pagination, Autoplay, 
@@ -28,25 +28,26 @@ import "../../scss/base/swiper.scss";
 function initSliders() {
 	// Список слайдерів
 	// Перевіряємо, чи є слайдер на сторінці
-	if (document.querySelector('.swiper')) { // Вказуємо склас потрібного слайдера
+	if (document.querySelector('.slider-main__body')) { // Вказуємо склас потрібного слайдера
 		// Створюємо слайдер
-		new Swiper('.swiper', { // Вказуємо склас потрібного слайдера
+		new Swiper('.slider-main__body', { // Вказуємо склас потрібного слайдера
 			// Підключаємо модулі слайдера
 			// для конкретного випадку
-			modules: [Navigation],
+			modules: [Navigation, Pagination],
 			observer: true,
 			observeParents: true,
 			slidesPerView: 1,
-			spaceBetween: 0,
+			spaceBetween: 32,
+			watchOverflow: true,
 			//autoHeight: true,
 			speed: 800,
-
 			//touchRatio: 0,
 			//simulateTouch: false,
 			loop: true,
-			//preloadImages: false,
+			loopAdditionalSliders: 5,
+			preloadImages: false,
+			parallax: true,
 			//lazy: true,
-
 			/*
 			// Ефекти
 			effect: 'fade',
@@ -55,15 +56,11 @@ function initSliders() {
 				disableOnInteraction: false,
 			},
 			*/
-
 			// Пагінація
-			/*
 			pagination: {
-				el: '.swiper-pagination',
+				el: '.controls-slider-main__dotts',
 				clickable: true,
 			},
-			*/
-
 			// Скроллбар
 			/*
 			scrollbar: {
@@ -71,11 +68,10 @@ function initSliders() {
 				draggable: true,
 			},
 			*/
-
 			// Кнопки "вліво/вправо"
 			navigation: {
-				prevEl: '.slider-arrow_prev',
-				nextEl: '.slider-arrow_next',
+				prevEl: '.slider-main .slider-arrow_prev',
+				nextEl: '.slider-main .slider-arrow_next',
 			},
 			/*
 			// Брейкпоінти
