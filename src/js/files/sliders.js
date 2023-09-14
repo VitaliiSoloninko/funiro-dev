@@ -47,7 +47,7 @@ function initSliders() {
 			loopAdditionalSliders: 5,
 			preloadImages: false,
 			parallax: true,
-			//lazy: true,
+			// lazy: true,
 			/*
 			// Ефекти
 			effect: 'fade',
