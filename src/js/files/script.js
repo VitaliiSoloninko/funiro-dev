@@ -3,6 +3,7 @@ import { isMobile } from "./functions.js";
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
 import { removeClasses } from "./functions.js";
+import { digitsCounter } from "./scroll/scroll.js";
 
 window.onload = function () {
 	document.addEventListener("click", documentActions);
@@ -221,3 +222,22 @@ data-spollers="768,min" - спойлеры будут работать толь�
 
 Если нужно что бы в блоке открывался болько один слойлер добавляем атрибут data-one-spoller
 */
+
+// Header
+
+const headerElement = document.querySelector('.header');
+const callback = function (entries, observer) {
+	if (entries[0].isIntersecting) {
+		headerElement.classList.remove('_scroll');
+	} else {
+		headerElement.classList.add('_scroll');
+	}
+}
+
+const headerObserver = new IntersectionObserver(callback);
+headerObserver.observe(headerElement);
+
+
+
+
+
