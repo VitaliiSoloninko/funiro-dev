@@ -295,13 +295,28 @@
 	// .products__item
 	&__item {
 	}
+	&__footer {
+		padding-top: 32px;
+		text-align: center;
+	}
+	&__more {
+		border: 1px solid $orangeColor;
+		min-width: 245px;
+	}
 }
-
 .item-product {
 	background-color: #f4f5f7;
 	display: flex;
 	flex-direction: column;
 	position: relative;
+	@media (any-hover: hover) {
+		&:hover {
+			.item-product__actions {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
 	// .item-product__labels
 	&__labels {
 		position: absolute;
@@ -329,13 +344,14 @@
 		&_sale {
 			background-color: #e97171;
 		}
+		// .item-product__label_new
 		&_new {
 			background-color: #2ec1ac;
 		}
 	}
 	// .item-product__image
 	&__image {
-		padding: 105.614035%; /* 301/285 */
+		padding-bottom: 105.6%;
 	}
 	// .item-product__body
 	&__body {
@@ -347,6 +363,9 @@
 	// .item-product__content
 	&__content {
 		flex: 1 1 auto;
+		&:not(:last-child) {
+			margin-bottom: rem(8);
+		}
 	}
 	// .item-product__title
 	&__title {
@@ -391,19 +410,23 @@
 	}
 	// .item-product__actions
 	&__actions {
+		@media (any-hover: none) {
+			padding-top: 15px;
+		}
 		@media (any-hover: hover) {
-			&:hover {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				background-color: rgba(58, 58, 58, 072);
-				z-index: 3;
-			}
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease 0s;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: rgba(58, 58, 58, 072);
+			z-index: 3;
 		}
 	}
 }
@@ -418,8 +441,26 @@
 	// .actions-product__button
 	&__button {
 		flex: 1 1 100%;
+		&:not(:last-child) {
+			margin-bottom: rem(24);
+		}
 	}
 	// .actions-product__link
 	&__link {
+		display: flex;
+		align-items: center;
+		color: inherit;
+		font-weight: 600;
+		transition: color 0.3s ease 0s;
+		&::before {
+			margin-right: 10px;
+			font-size: 16px;
+		}
+		@media (any-hover: hover) {
+			color: #fff;
+			&:hover {
+				color: $orangeColor;
+			}
+		}
 	}
 }
