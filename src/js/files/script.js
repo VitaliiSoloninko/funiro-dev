@@ -24,7 +24,64 @@ window.onload = function () {
 		} else if (!targetElement.closest('.search-form') && document.querySelector('.search-form._active')) {
 			document.querySelector('.search-form').classList.remove('_active');
 		}
+		if (targetElement.classList.contains('products__more')) {
+			getProducts(targetElement);
+			e.preventDefault();
+		}
 	}
+
+	// Header
+	const headerElement = document.querySelector('.header');
+	const callback = function (entries, observer) {
+		if (entries[0].isIntersecting) {
+			headerElement.classList.remove('_scroll');
+		} else {
+			headerElement.classList.add('_scroll');
+		}
+	}
+
+	const headerObserver = new IntersectionObserver(callback);
+	headerObserver.observe(headerElement);
+
+	// Завантажити більше товарів
+
+	async function getProducts(button) {
+		if (!button.classList.contains('_hold')) {
+			button.classList.add('_hold');
+			const file = "json/products.json";
+			let response = await fetch(file, {
+				method: "GET"
+			});
+			if (response.ok) {
+				let result = await response.json();
+				loadProducts(result);
+				button.classList.remove('_hold');
+				button.remove();
+			} else {
+				alert("Error");
+			}
+		}
+	}
+
+	function loadProducts(data) {
+		const productsItems = document.querySelector('.products__items');
+
+		data.products.forEach(item => {
+			const productId = item.id;
+			const productUrl = item.url;
+			const productImage = item.image;
+			const productTitle = item.title;
+			const productText = item.text;
+			const productPrice = item.price;
+			const productOldPrice = item.priceOld;
+			const productShareUrl = item.shareUrl;
+			const productLikeUrl = item.likeUrl;
+			const productLabels = item.labels;
+		});
+	}
+
+
+
 }
 
 "use strict"
@@ -223,19 +280,7 @@ data-spollers="768,min" - спойлеры будут работать толь�
 Если нужно что бы в блоке открывался болько один слойлер добавляем атрибут data-one-spoller
 */
 
-// Header
 
-const headerElement = document.querySelector('.header');
-const callback = function (entries, observer) {
-	if (entries[0].isIntersecting) {
-		headerElement.classList.remove('_scroll');
-	} else {
-		headerElement.classList.add('_scroll');
-	}
-}
-
-const headerObserver = new IntersectionObserver(callback);
-headerObserver.observe(headerElement);
 
 
 
