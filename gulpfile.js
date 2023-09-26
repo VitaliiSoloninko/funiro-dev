@@ -45,13 +45,12 @@ const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fonstStyle);
 // Основні завдання виконуватимемо паралельно після обробки шрифтів
 const devTasks = gulp.parallel(fonts, gitignore);
 // Основні завдання виконуватимемо паралельно після обробки шрифтів
-const buildTasks = gulp.series(fonts, jsDev, js, json, gulp.parallel(html, css, images, gitignore));
+const buildTasks = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images, gitignore));
 
 // Експорт завдань
 export { html }
 export { css }
 export { js }
-exports.json = json;
 export { jsDev }
 export { images }
 export { fonts }

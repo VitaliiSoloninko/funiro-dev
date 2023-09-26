@@ -15,7 +15,14 @@
 	line-height: 120%;
 }
 
+.text {
+	font-weight: 500;
+	line-height: 150%;
+}
+
 .button {
+	font-weight: 600;
+	line-height: 150%;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
@@ -23,6 +30,15 @@
 	text-align: center;
 	transition: all 0.3s ease 0s;
 	min-height: 48px;
+	background-color: $orangeColor;
+	color: #fff;
+	transition: background-color 0.3s ease 0s;
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: #cc865a;
+			cursor: pointer;
+		}
+	}
 	// .button_white
 	&_white {
 		background-color: #fff;
@@ -75,6 +91,7 @@
 	&_white {
 		box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.16);
 		background-color: #fff;
+		transition: all 0.3s ease 0s;
 		@media (any-hover: hover) {
 			&:hover {
 				background-color: $orangeColor;

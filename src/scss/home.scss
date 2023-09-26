@@ -10,6 +10,8 @@
 	// .page__products
 	&__products {
 	}
+	&__rooms {
+	}
 }
 .main-slider {
 	// .main-slider__container
@@ -94,14 +96,7 @@
 		font-weight: 600;
 		@include adaptiveValue("min-height", 78, 45);
 		@include adaptiveValue("font-size", 20, 16);
-		background-color: $orangeColor;
-		color: #fff;
 		width: 100%;
-		@media (any-hover: hover) {
-			&:hover {
-				background-color: #cc865a;
-			}
-		}
 	}
 }
 .slider-main {
@@ -430,7 +425,6 @@
 		}
 	}
 }
-
 .actions-product {
 	// .actions-product__body
 	&__body {
@@ -462,5 +456,104 @@
 				color: $orangeColor;
 			}
 		}
+	}
+}
+//========================================================================================================================================================
+.rooms {
+	background: #fcf8f3;
+	@include adaptiveValue("padding-top", 44, 30);
+	@include adaptiveValue("padding-bottom", 44, 30);
+	// .rooms__container
+	&__container {
+		@media (min-width: $tablet) {
+			display: flex;
+		}
+	}
+	// .rooms__body
+	&__body {
+		flex: 0 0 37.5%; /* 465/1240 */
+		position: relative;
+		z-index: 5;
+		align-self: center;
+		@media (min-width: $tablet) {
+			@include adaptiveValue("padding-right", 86, 30);
+		}
+	}
+	// .rooms__title
+	&__title {
+		text-align: left;
+		&:not(:last-child) {
+			margin-bottom: rem(8);
+		}
+	}
+	// .rooms__text
+	&__text {
+		&:not(:last-child) {
+			margin-bottom: rem(24);
+		}
+	}
+	// .rooms__button
+	&__button {
+		min-width: 180px;
+	}
+	// .rooms__slider
+	&__slider {
+		flex: 1 1 auto;
+		max-width: 0;
+		align-self: flex-start;
+	}
+}
+.slider-rooms {
+	// .slider-rooms__body
+	&__body {
+	}
+	// .slider-rooms__slide
+	&__slide {
+		width: 372px;
+		position: relative;
+		overflow: hidden;
+		@include adaptiveValue("min-height", 585, 400);
+	}
+	// .slider-rooms__image
+	&__image {
+		transition: height 0.8s ease 0s;
+		height: 100%;
+	}
+	// .slider-rooms__content
+	&__content {
+	}
+	// .slider-rooms__label
+	&__label {
+	}
+	// .slider-rooms__title
+	&__title {
+	}
+	// .slider-rooms__arrows
+	&__arrows {
+	}
+	// .slider-rooms__dotts
+	&__dotts {
+	}
+}
+.label-slider {
+	// .label-slider__number
+	&__number {
+	}
+	// .label-slider__line
+	&__line {
+	}
+	// .label-slider__text
+	&__text {
+	}
+}
+.slider-arrow {
+	// .slider-arrow_white
+	&_white {
+	}
+	// .slider-arrow_prev
+	&_prev {
+	}
+	// .slider-arrow_next
+	&_next {
 	}
 }
