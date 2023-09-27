@@ -175,6 +175,80 @@ function initSliders() {
 			}
 		});
 	}
+
+	if (document.querySelector('.rooms2__slider')) { // Вказуємо склас потрібного слайдера
+		// Створюємо слайдер
+		new Swiper('.rooms2__slider', { // Вказуємо склас потрібного слайдера
+			// Підключаємо модулі слайдера
+			// для конкретного випадку
+			modules: [Navigation, Pagination],
+			observer: true,
+			observeParents: true,
+			slidesPerView: 1,
+			spaceBetween: 24,
+			watchOverflow: true,
+			//autoHeight: true,
+			speed: 800,
+			//touchRatio: 0,
+			//simulateTouch: false,
+			loop: true,
+			watchOverflow: true,
+			loopAdditionalSliders: 5,
+			preloadImages: false,
+			parallax: true,
+			// lazy: true,
+			/*
+			// Ефекти
+			effect: 'fade',
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+			},
+			*/
+			// Пагінація
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+			// Скроллбар
+			/*
+			scrollbar: {
+				el: '.swiper-scrollbar',
+				draggable: true,
+			},
+			*/
+			// Кнопки "вліво/вправо"
+			navigation: {
+				prevEl: '.rooms2__slider .swiper-button-prev',
+				nextEl: '.rooms2__slider .swiper-arrow_next',
+			},
+			/*
+			// Брейкпоінти
+			breakpoints: {
+				640: {
+					slidesPerView: 1,
+					spaceBetween: 0,
+					autoHeight: true,
+				},
+				768: {
+					slidesPerView: 2,
+					spaceBetween: 20,
+				},
+				992: {
+					slidesPerView: 3,
+					spaceBetween: 20,
+				},
+				1268: {
+					slidesPerView: 4,
+					spaceBetween: 30,
+				},
+			},
+			*/
+			// Події
+			on: {
+			}
+		});
+	}
 }
 // Скролл на базі слайдера (за класом swiper scroll для оболонки слайдера)
 function initSlidersScroll() {
