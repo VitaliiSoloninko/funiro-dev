@@ -478,6 +478,9 @@
 		@media (min-width: $tablet) {
 			@include adaptiveValue("padding-right", 86, 30);
 		}
+		@media (max-width: $tablet) {
+			margin-bottom: rem(30);
+		}
 	}
 	// .rooms__title
 	&__title {
@@ -501,9 +504,13 @@
 		flex: 1 1 auto;
 		min-width: 0;
 		align-self: flex-start;
+		@media (max-width: $mobileSmall) {
+			margin: rem(0) rem(-15);
+		}
 	}
 }
 .slider-rooms {
+	position: relative;
 	// .slider-rooms__body
 	&__body {
 		overflow: visible;
@@ -530,6 +537,9 @@
 			.slider-rooms__image {
 				height: 100%;
 			}
+		}
+		@media (max-width: $mobileSmall) {
+			width: 100%;
 		}
 	}
 	// .slider-rooms__image
@@ -572,12 +582,37 @@
 	}
 	// .slider-rooms__title
 	&__title {
+		@include adaptiveValue("font-size", 28, 24);
+		font-weight: 600;
+		line-height: 120%;
 	}
 	// .slider-rooms__arrows
 	&__arrows {
+		pointer-events: none;
+		position: absolute;
+		top: 50%;
+		transform: translate(0px, -50%);
+		width: calc(100% - 48px);
+		left: 24px;
+		z-index: 7;
+		justify-content: space-between;
+		@media (min-width: $pc) {
+			width: calc(100% + 48px);
+			left: -24px;
+		}
 	}
 	// .slider-rooms__dotts
 	&__dotts {
+		@media (min-width: $mobile) {
+			position: absolute;
+			bottom: 0px;
+			width: 100%;
+			left: 415px;
+		}
+		@media (max-width: $mobile) {
+			justify-content: center;
+			padding-top: 15px;
+		}
 	}
 }
 .label-slider {
