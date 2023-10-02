@@ -1,8 +1,44 @@
+/*
+Документація по роботі у шаблоні: 
+Документація слайдера: https://swiperjs.com/
+Сніппет(HTML): swiper
+*/
+
+// Підключаємо слайдер Swiper з node_modules
+// При необхідності підключаємо додаткові модулі слайдера, вказуючи їх у {} через кому
+// Приклад: { Navigation, Autoplay }
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
+/*
+Основні модулі слайдера:
+Navigation, Pagination, Autoplay, 
+EffectFade, Lazy, Manipulation
+Детальніше дивись https://swiperjs.com/
+*/
+
+// Стилі Swiper
+// Базові стилі
 import "../../scss/base/swiper.scss";
+// Повний набір стилів з scss/libs/swiper.scss
+// import "../../scss/libs/swiper.scss";
+// Повний набір стилів з node_modules
+// import 'swiper/css';
+
+// Ініціалізація слайдерів
 function initSliders() {
+	// Список слайдерів
+	// Перевіряємо, чи є слайдер на сторінці
+
+
 }
+
+
+window.addEventListener("load", function (e) {
+	// Запуск ініціалізації слайдерів
+	initSliders();
+	// Запуск ініціалізації скролла на базі слайдера (за класом swiper_scroll)
+	//initSlidersScroll();
+});
 
 // Main slider
 if (document.querySelector('.slider-main__body')) {
@@ -30,7 +66,9 @@ if (document.querySelector('.slider-main__body')) {
 		},
 	});
 }
-// Rooms slider
+
+
+// Rooms
 if (document.querySelector('.slider-rooms__body')) {
 	new Swiper('.slider-rooms__body', {
 		modules: [Navigation, Pagination],
@@ -56,7 +94,8 @@ if (document.querySelector('.slider-rooms__body')) {
 		},
 	});
 }
-// Tips slider
+
+// Tips
 if (document.querySelector('.slider-tips__body')) {
 	new Swiper('.slider-tips__body', {
 		modules: [Navigation, Pagination],
@@ -77,22 +116,5 @@ if (document.querySelector('.slider-tips__body')) {
 			nextEl: '.slider-tips .slider-arrow_next',
 			prevEl: '.slider-tips .slider-arrow_prev',
 		},
-		breakpoints: {
-			// when window width is >= 320px
-			320: {
-				slidesPerView: 1.1,
-				spaceBetween: 15
-			},
-			// when window width is >= 768px
-			768: {
-				slidesPerView: 2,
-				spaceBetween: 20
-			},
-			// when window width is >= 992px
-			992: {
-				slidesPerView: 3,
-				spaceBetween: 32
-			}
-		}
-	});
+	})
 }
