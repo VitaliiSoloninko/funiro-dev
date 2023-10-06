@@ -1,25 +1,21 @@
 // Заголовки, загальні БЕМ блоки та інше...
 // ._footer-title
-
 ._footer-title {
 	@include adaptiveValue("font-size", 24, 20);
 	line-height: math.div(29, 24);
 	color: #000;
 	font-weight: 700;
 }
-
 .title {
 	@include adaptiveValue("font-size", 40, 26);
 	text-align: center;
 	font-weight: 700;
 	line-height: 120%;
 }
-
 .text {
 	font-weight: 500;
 	line-height: 150%;
 }
-
 .button {
 	font-weight: 600;
 	line-height: 150%;
@@ -51,13 +47,11 @@
 		}
 	}
 }
-
 .slider-arrows {
 	display: grid;
 	grid-template-columns: repeat(2, 48px);
 	column-gap: 8px;
 }
-
 .slider-arrow {
 	pointer-events: auto;
 	height: 48px;
@@ -101,7 +95,6 @@
 		}
 	}
 }
-
 .swiper-pagination-bullets {
 	display: flex;
 	flex-wrap: wrap;
@@ -139,7 +132,6 @@
 		transform: scale(0);
 	}
 }
-
 .swiper-pagination-bullet-active {
 	&::after {
 		background-color: $orangeColor;
@@ -148,7 +140,6 @@
 		transform: scale(1);
 	}
 }
-
 .swiper-pagination-bullet {
 	height: 27px;
 	width: 27px;
