@@ -536,7 +536,7 @@
 	}
 	// .slider-rooms__slide
 	&__slide {
-		width: 372px;
+		width: 373px;
 		position: relative;
 		overflow: hidden;
 		@include adaptiveValue("min-height", 585, 400);
@@ -601,7 +601,7 @@
 		transform: translate(0px, -50%);
 		width: calc(100% - 48px);
 		left: 24px;
-		z-index: 7;
+		z-index: 5;
 		justify-content: space-between;
 		@media (min-width: $pc) {
 			width: calc(100% + 48px);
@@ -612,7 +612,7 @@
 	&__dotts {
 		@media (min-width: $mobile) {
 			position: absolute;
-			bottom: 0px;
+			bottom: 30px;
 			width: 100%;
 			left: 415px;
 		}

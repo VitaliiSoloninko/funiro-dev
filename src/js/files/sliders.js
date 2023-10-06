@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Parallax } from 'swiper/modules';
 import "../../scss/base/swiper.scss";
 function initSliders() {
 }
@@ -8,12 +8,12 @@ function initSliders() {
 // Main slider
 if (document.querySelector('.slider-main__body')) {
 	new Swiper('.slider-main__body', {
-		modules: [Navigation, Pagination],
+		modules: [Navigation, Pagination, Parallax],
 		observer: true,
 		observeParents: true,
 		slidesPerView: 1,
 		spaceBetween: 32,
-		watchOverflow: true,
+		watchOverflow: true, // якщо слайдів менше чим показує за раз, не показує елементи управління
 		speed: 800,
 		loop: true,
 		loopAdditionalSliders: 5,
@@ -34,7 +34,7 @@ if (document.querySelector('.slider-main__body')) {
 // Rooms slider
 if (document.querySelector('.slider-rooms__body')) {
 	new Swiper('.slider-rooms__body', {
-		modules: [Navigation, Pagination],
+		modules: [Navigation, Pagination, Parallax],
 		observer: true,
 		observeParents: true,
 		slidesPerView: 'auto',
