@@ -4,7 +4,6 @@ import "../../scss/base/swiper.scss";
 function initSliders() {
 }
 
-
 // Main slider
 if (document.querySelector('.slider-main__body')) {
 	new Swiper('.slider-main__body', {
@@ -52,8 +51,8 @@ if (document.querySelector('.slider-rooms__body')) {
 		},
 		// Arrows
 		navigation: {
-			nextEl: '.slider-arrows .slider-arrow_next',
-			prevEl: '.slider-arrows .slider-arrow_prev',
+			nextEl: '.slider-rooms .slider-arrow_next',
+			prevEl: '.slider-rooms .slider-arrow_prev',
 		},
 	});
 }

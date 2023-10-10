@@ -7,7 +7,6 @@ import { digitsCounter } from "./scroll/scroll.js";
 
 window.onload = function () {
 	document.addEventListener("click", documentActions);
-
 	// Actions (делегування подій click)
 	function documentActions(e) {
 		const targetElement = e.target;
@@ -39,48 +38,10 @@ window.onload = function () {
 			headerElement.classList.add('_scroll');
 		}
 	}
-
 	const headerObserver = new IntersectionObserver(callback);
 	headerObserver.observe(headerElement);
 
-	// Завантажити більше товарів
-
-	async function getProducts(button) {
-		if (!button.classList.contains('_hold')) {
-			button.classList.add('_hold');
-			const file = "json/products.json";
-			let response = await fetch(file, {
-				method: "GET"
-			});
-			if (response.ok) {
-				let result = await response.json();
-				loadProducts(result);
-				button.classList.remove('_hold');
-				button.remove();
-			} else {
-				alert("Error");
-			}
-		}
-	}
-
-	function loadProducts(data) {
-		const productsItems = document.querySelector('.products__items');
-
-		data.products.forEach(item => {
-			const productId = item.id;
-			const productUrl = item.url;
-			const productImage = item.image;
-			const productTitle = item.title;
-			const productText = item.text;
-			const productPrice = item.price;
-			const productOldPrice = item.priceOld;
-			const productShareUrl = item.shareUrl;
-			const productLikeUrl = item.likeUrl;
-			const productLabels = item.labels;
-		});
-	}
-
-	// Furniture Gallery
+	// Furniture gallery movie
 	const furniture = document.querySelector('.furniture__body');
 	if (furniture && !isMobile.any()) {
 		const furnitureItems = document.querySelector('.furniture__items');
@@ -121,7 +82,7 @@ window.onload = function () {
 			const coordX = e.pageX - furnitureWidth / 2;
 
 			// Получаем проценты
-			coordXprocent = coordX / furnitureWidth * 200;
+			coordXprocent = coordX / furnitureWidth * 50;
 
 			if (!furniture.classList.contains('_init')) {
 				requestAnimationFrame(setMouseGalleryStyle);
@@ -129,7 +90,6 @@ window.onload = function () {
 			}
 		});
 	}
-
 }
 
 "use strict"
