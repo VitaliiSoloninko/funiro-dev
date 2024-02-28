@@ -69,7 +69,7 @@
 	z-index: 5;
 	padding-right: 15px;
 	padding-left: 15px;
-	@include adaptiveValue("padding-top", 60, 15);
+	@include adaptiveValue("padding-top", 60, 40);
 	@include adaptiveValue("padding-bottom", 60, 15);
 	@media (min-width: $mobile) {
 		@include adaptiveValue("padding", 60, 1);

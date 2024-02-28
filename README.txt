@@ -1,13 +1,23 @@
-Сподіваюсь, "Чертоги Фрілансера" допоможуть зекономити чимало часу
-і отримати задоволення від розробки :)
+---- Description ----
+One-page landing page of an online store about mobel.
 
-Дякую за підтримку безкоштовного навчального контенту!
+---- Technologies ----
+Developed using HTML SCSS Java Script
 
-//------------------------------------------------------------------------------
+---- Consists of ----
+1 page
+10 sections
 
-Документація до шаблону: https://template.fls.guru/template-docs 
+---- Sections ----
+Header
+Main-slider
+Advantages
+Products
+Rooms
+Tips
+Furniture
+Footer
 
-//------------------------------------------------------------------------------
-
-Навчайся, розвивайся та пам'ятай - Живи, а працюй у вільний час!
-Жека Андріканич (Фрілансер по життю)
+---- The project includes ----
+Slider Swiper
+Gallery lightgalleryjs
