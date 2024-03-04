@@ -91,40 +91,84 @@ window.onload = function () {
       const productShareUrl = item.shareUrl;
       const productLikeUrl = item.LikeUrl;
       const productLabels = item.labels;
-      // тепер ці дані треба інтегрувати в HTML карточки товару, розбирамо HTML
+      // тепер ці дані треба інтегрувати в HTML карточки товару
+      // HTML код картки товару, розібраний на частини JS
+      // Кожна частина присвоюється у змінну
+
+      // Відкриваючий і закриваючий тег article зі своїм id
       let productTemplateStart = `<article data-pid="${productId}" class="products__item item-product">`;
       let productTemplateEnd = `</article>`;
 
-      /*
-		let templete = `
-						
-							<div class="item-product__labels">
-								<div class="item-product__label item-product__label_sale">-30%</div>
-								<div class="item-product__label item-product__label_new">New</div>
-							</div>
-							<a href="" class="item-product__image -ibg">
-								<img src="@img/products/01.jpg" alt="Syltherine">
-							</a>
-							<div class="item-product__body">
-								<div class="item-product__content">
-									<h5 class="item-product__title">Syltherine</h5>
-									<div class="item-product__text">Stylish cafe chair</div>
-								</div>
-								<div class="item-product__prices">
-									<div class="item-product__price">Rp 2.500.000</div>
-									<div class="item-product__price item-product__price_old">Rp 3.500.000</div>
-								</div>
-								<div class="item-product__actions actions-product">
-									<div class="actions-product__body">
-										<a href="" class="actions-product__button button button_white">Add to cart</a>
-										<a href="" class="actions-product__link _icon-share">Share</a>
-										<a href="" class="actions-product__link _icon-favorite">Like</a>
-									</div>
-								</div>
-							</div>
-						
+      let productTempleteLabels = '';
+      if (productLabels) {
+        let productTempleteLabelsStart = `<div class="item-product__labels">`;
+        let productTempleteLabelsEnd = `</div>`;
+        let productTempleteLabelsContent = '';
+        productLabels.forEach((labelItem) => {
+          productTempleteLabelsContent += `<div class="item-product__label item-product__label_${labelItem.type}">${labelItem.value}</div>`;
+        });
+        productTempleteLabels += productTempleteLabelsStart;
+        productTempleteLabels += productTempleteLabelsContent;
+        productTempleteLabels += productTempleteLabelsEnd;
+      }
+
+      let productTempleteImage = `
+		<a href="${productId}" class="item-product__image -ibg">
+			<img src="@img/products/${productImage}" alt="${productTitle}">
+		</a>
 		`;
-		*/
+      let productTempleteBodyStart = `<div class="item-product__body">`;
+      let productTempleteBodyEnd = `</div>`;
+
+      let productTempleteContent = `
+		<div class="item-product__content">
+			<h5 class="item-product__title">${productTitle}</h5>
+			<div class="item-product__text">${productText}</div>
+		</div>
+		`;
+      let productTempletePrices = '';
+      let productTempletePricesStart = `<div class="item-product__prices">`;
+      let productTempletePricesCurrent = `<div class="item-product__price">Rp ${productPrice}</div>`;
+      let productTempletePricesOld = `<div class="item-product__price item-product__price_old">Rp ${productOldPrice}</div>`;
+      let productTempletePricesEnd = `</div>`;
+
+      productTempletePrices = productTempletePricesStart;
+      productTempletePrices += productTempletePricesCurrent;
+      // Якщо є стара ціна, то додаємо перевірку, інакше пропускаємо
+      if (productOldPrice) {
+        productTempletePrices += productTempletePricesOld;
+      }
+      productTempletePrices += productTempletePricesEnd;
+
+      let productTempleteActions = `
+		<div class="item-product__actions actions-product">
+			<div class="actions-product__body">
+				<a href="" class="actions-product__button button button_white">Add to cart</a>
+				<a href="${productShareUrl}" class="actions-product__link _icon-share">Share</a>
+				<a href="${productLikeUrl}" class="actions-product__link _icon-favorite">Like</a>
+			</div>							
+		</div>
+		`;
+
+      // Збірка всіх підблоків карточки у Body
+      let productTempleteBody = '';
+      productTempleteBody += productTempleteBodyStart;
+      productTempleteBody += productTempleteContent;
+      productTempleteBody += productTempletePrices;
+      productTempleteBody += productTempleteActions;
+      productTempleteBody += productTempleteBodyEnd;
+
+      // Збірка всієї карточки товару
+      let productTemplate = '';
+      productTemplate += productTemplateStart;
+      productTemplate += productTempleteLabels;
+      productTemplate += productTempleteImage;
+      productTemplate += productTempleteBody;
+      productTemplate += productTemplateEnd;
+
+      // Виводимо нашу змінну в HTML
+      // beforeend - означає додати вкінець
+      productsItems.insertAdjacentElement('beforeend', productTemplate);
     });
   }
 
