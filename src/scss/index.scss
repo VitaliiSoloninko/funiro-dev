@@ -26,7 +26,7 @@
 		position: relative;
 		@media (min-width: $tablet) {
 			&::before {
-				content: "";
+				content: '';
 				background-color: #f9f1e7;
 				position: absolute;
 				top: 0;
@@ -38,7 +38,7 @@
 	}
 	// .main-slider__body
 	&__body {
-		@include adaptiveValue("padding-top", 140, 60);
+		@include adaptiveValue('padding-top', 140, 60);
 		position: relative;
 		z-index: 2;
 		@media (min-width: $tablet) {
@@ -49,7 +49,7 @@
 	&__content {
 		align-self: flex-start;
 		flex: 0 0 39.83871%; /* 494/1240 */
-		@include adaptiveValue("margin-bottom", 80, 15);
+		@include adaptiveValue('margin-bottom', 80, 15);
 		@media (max-width: $tablet) {
 			margin: 0px -15px;
 		}
@@ -69,19 +69,21 @@
 	z-index: 5;
 	padding-right: 15px;
 	padding-left: 15px;
-	@include adaptiveValue("padding-top", 60, 40);
-	@include adaptiveValue("padding-bottom", 60, 15);
+	@include adaptiveValue('padding-top', 60, 40);
+	@include adaptiveValue('padding-bottom', 60, 15);
 	@media (min-width: $mobile) {
-		@include adaptiveValue("padding", 60, 1);
+		@include adaptiveValue('padding', 60, 1);
 		background-color: rgba(255, 255, 255, 0.72);
-		@supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))) {
+		@supports (
+			(-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))
+		) {
 			background-color: rgba(255, 255, 255, 0.72);
 			backdrop-filter: blur(31px);
 		}
 	}
 	// .content-main__title
 	&__title {
-		@include adaptiveValue("font-size", 56, 24);
+		@include adaptiveValue('font-size', 56, 24);
 		font-weight: 700;
 		line-height: 120%;
 		&:not(:last-child) {
@@ -91,18 +93,18 @@
 	// .content-main__text
 	&__text {
 		color: $grayColor;
-		@include adaptiveValue("font-size", 20, 16);
+		@include adaptiveValue('font-size', 20, 16);
 		font-weight: 500;
 		line-height: 150%;
 		&:not(:last-child) {
-			@include adaptiveValue("margin-bottom", 48, 20);
+			@include adaptiveValue('margin-bottom', 48, 20);
 		}
 	}
 	// .content-main__button
 	&__button {
 		font-weight: 600;
-		@include adaptiveValue("min-height", 78, 45);
-		@include adaptiveValue("font-size", 20, 16);
+		@include adaptiveValue('min-height', 78, 45);
+		@include adaptiveValue('font-size', 20, 16);
 		width: 100%;
 	}
 }
@@ -127,7 +129,7 @@
 	&__body {
 		overflow: visible;
 		@media (min-width: $tablet) {
-			@include adaptiveValue("width", 934, 290);
+			@include adaptiveValue('width', 934, 290);
 		}
 		@media (max-width: $tablet) {
 			margin: 0px -15px;
@@ -155,15 +157,17 @@
 		color: inherit;
 		display: flex;
 		flex-direction: column;
-		@include adaptiveValue("padding", 24, 16);
+		@include adaptiveValue('padding', 24, 16);
 		background: rgba(255, 255, 255, 0.9);
 		@media (min-width: $mobile) {
 			position: absolute;
 			min-width: 350px;
-			@include adaptiveValue("right", 40, 0);
-			@include adaptiveValue("bottom", 40, 0);
+			@include adaptiveValue('right', 40, 0);
+			@include adaptiveValue('bottom', 40, 0);
 		}
-		@supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))) {
+		@supports (
+			(-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))
+		) {
 			background: rgba(255, 255, 255, 0.72);
 			backdrop-filter: blur(31px);
 		}
@@ -172,7 +176,7 @@
 	// .slider-main__title
 
 	&__title {
-		@include adaptiveValue("font-size", 28, 22);
+		@include adaptiveValue('font-size', 28, 22);
 		font-weight: 600;
 		line-height: 120%; /* 33.6px */
 		&:not(:last-child) {
@@ -200,7 +204,7 @@
 		justify-content: space-between;
 		font-weight: 600;
 		line-height: 150%; /* 30px */
-		@include adaptiveValue("font-size", 20, 16);
+		@include adaptiveValue('font-size', 20, 16);
 		&::before {
 			margin: 0px 0px 0px 10px;
 		}
@@ -232,8 +236,8 @@
 }
 //====================================================================================================
 .advantages {
-	@include adaptiveValue("padding-top", 88, 30);
-	@include adaptiveValue("padding-bottom", 88, 30);
+	@include adaptiveValue('padding-top', 88, 30);
+	@include adaptiveValue('padding-bottom', 88, 30);
 	// .advantages__container
 	&__container {
 		display: flex;
@@ -280,13 +284,13 @@
 }
 //========================================================================================================================================================
 .products {
-	@include adaptiveValue("padding-bottom", 44, 30);
+	@include adaptiveValue('padding-bottom', 44, 30);
 	// .products__container
 	&__container {
 	}
 	// .products__title
 	&__title {
-		@include adaptiveValue("margin-bottom", 32, 20);
+		@include adaptiveValue('margin-bottom', 32, 20);
 	}
 	// .products__items
 	&__items {
@@ -325,8 +329,8 @@
 		z-index: 2;
 		display: flex;
 		flex-direction: column;
-		@include adaptiveValue("right", 24, 10);
-		@include adaptiveValue("top", 24, 10);
+		@include adaptiveValue('right', 24, 10);
+		@include adaptiveValue('top', 24, 10);
 	}
 	// .item-product__label
 	&__label {
@@ -371,7 +375,7 @@
 	}
 	// .item-product__title
 	&__title {
-		@include adaptiveValue("font-size", 24, 20);
+		@include adaptiveValue('font-size', 24, 20);
 		font-weight: 600;
 		line-height: 120%;
 		&:not(:last-child) {
@@ -397,13 +401,13 @@
 	}
 	// .item-product__price
 	&__price {
-		@include adaptiveValue("font-size", 20, 16);
+		@include adaptiveValue('font-size', 20, 16);
 		font-weight: 600;
 		&:not(:last-child) {
 		}
 		// .item-product__price_old
 		&_old {
-			@include adaptiveValue("font-size", 16, 14);
+			@include adaptiveValue('font-size', 16, 14);
 			text-decoration: line-through;
 			color: #b0b0b0;
 			font-weight: normal;
@@ -468,8 +472,8 @@
 //========================================================================================================================================================
 .rooms {
 	background: #fcf8f3;
-	@include adaptiveValue("padding-top", 44, 30);
-	@include adaptiveValue("padding-bottom", 44, 30);
+	@include adaptiveValue('padding-top', 44, 30);
+	@include adaptiveValue('padding-bottom', 44, 30);
 	// .rooms__container
 	&__container {
 		@media (min-width: $tablet) {
@@ -483,7 +487,7 @@
 		z-index: 5;
 		align-self: center;
 		@media (min-width: $tablet) {
-			@include adaptiveValue("padding-right", 86, 30);
+			@include adaptiveValue('padding-right', 86, 30);
 		}
 		@media (max-width: $tablet) {
 			margin-bottom: rem(30);
@@ -523,7 +527,7 @@
 		overflow: visible;
 		position: relative;
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -539,7 +543,7 @@
 		width: 373px;
 		position: relative;
 		overflow: hidden;
-		@include adaptiveValue("min-height", 585, 400);
+		@include adaptiveValue('min-height', 585, 400);
 		&.swiper-slide-active {
 			.slider-rooms__image {
 				height: 100%;
@@ -562,11 +566,13 @@
 		position: absolute;
 		color: inherit;
 		max-width: rem(240);
-		@include adaptiveValue("left", 24, 15);
-		@include adaptiveValue("bottom", 24, 15);
-		@include adaptiveValue("padding", 32, 15);
+		@include adaptiveValue('left', 24, 15);
+		@include adaptiveValue('bottom', 24, 15);
+		@include adaptiveValue('padding', 32, 15);
 		background-color: rgba(255, 255, 255, 0.72);
-		@supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))) {
+		@supports (
+			(-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))
+		) {
 			background-color: rgba(255, 255, 255, 0.72);
 			backdrop-filter: blur(31px);
 		}
@@ -589,7 +595,7 @@
 	}
 	// .slider-rooms__title
 	&__title {
-		@include adaptiveValue("font-size", 28, 24);
+		@include adaptiveValue('font-size', 28, 24);
 		font-weight: 600;
 		line-height: 120%;
 	}
@@ -658,8 +664,8 @@
 //========================================================================================================================================================
 .tips {
 	// .tips__container
-	@include adaptiveValue("padding-top", 44, 30);
-	@include adaptiveValue("padding-bottom", 44, 30);
+	@include adaptiveValue('padding-top', 44, 30);
+	@include adaptiveValue('padding-bottom', 44, 30);
 	&__container {
 	}
 	// .tips__title
@@ -674,9 +680,9 @@
 	// .slider-tips__body
 
 	&__body {
-		@include adaptiveValue("margin-left", -32, -15);
-		@include adaptiveValue("margin-right", -32, -15);
-		@include adaptiveValue("padding", 32, 15);
+		@include adaptiveValue('margin-left', -32, -15);
+		@include adaptiveValue('margin-right', -32, -15);
+		@include adaptiveValue('padding', 32, 15);
 	}
 
 	// .slider-tips__slide
@@ -713,7 +719,7 @@
 	&__title {
 		flex: 1 1 auto;
 		color: inherit;
-		@include adaptiveValue("font-size", 24, 18);
+		@include adaptiveValue('font-size', 24, 18);
 		font-weight: 600;
 		line-height: 120%;
 		transition: color 0.3s ease 0s;
@@ -736,7 +742,7 @@
 	// .slider-tips__dotts
 
 	&__dotts {
-		@include adaptiveValue("padding-top", 8, 0);
+		@include adaptiveValue('padding-top', 8, 0);
 		justify-content: center;
 	}
 	// .slider-tips__arrows
@@ -776,7 +782,7 @@
 }
 //========================================================================================================================================================
 .furniture {
-	@include adaptiveValue("padding-bottom", 87, 40);
+	@include adaptiveValue('padding-bottom', 87, 40);
 	// .furniture__container
 	&__container {
 	}
@@ -784,7 +790,7 @@
 	&__label {
 		color: $darkGrayColor;
 		text-align: center;
-		@include adaptiveValue("font-size", 20, 16);
+		@include adaptiveValue('font-size', 20, 16);
 		font-weight: 600;
 		line-height: 150%;
 		&:not(:last-child) {
@@ -794,7 +800,7 @@
 	// .furniture__title
 	&__title {
 		&:not(:last-child) {
-			@include adaptiveValue("margin-bottom", 43, 20);
+			@include adaptiveValue('margin-bottom', 43, 20);
 		}
 	}
 	// .furniture__body
