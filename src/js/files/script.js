@@ -1,9 +1,7 @@
 // Підключення функціоналу "Чертоги Фрілансера"
 import { isMobile } from './functions.js'
 // Підключення списку активних модулів
-import { flsModules } from './modules.js'
 import { removeClasses } from './functions.js'
-import { digitsCounter } from './scroll/scroll.js'
 
 window.onload = function () {
 	document.addEventListener('click', documentActions)
@@ -30,14 +28,14 @@ window.onload = function () {
 			document.querySelector('.search-form').classList.remove('_active')
 		}
 		// =========================================  Відловити клік на кнопку Show more по класу products__more
-		if (targetElement.classList.contains('products__more')) {
-			// коли натиснули на кнопку
-			getProducts(targetElement) // Відправити її в нову функцію getProducts
-			e.preventDefault() // Щоб не перегружалася сторінка
-		}
+		// if (targetElement.classList.contains('products__more')) {
+		// 	// коли натиснули на кнопку
+		// 	getProducts(targetElement) // Відправити її в нову функцію getProducts
+		// 	e.preventDefault() // Щоб не перегружалася сторінка
+		// }
 	}
 
-	// Header
+	// ==================== Header Scroll
 	const headerElement = document.querySelector('.header')
 	const callback = function (entries, observer) {
 		if (entries[0].isIntersecting) {
@@ -49,125 +47,150 @@ window.onload = function () {
 	const headerObserver = new IntersectionObserver(callback)
 	headerObserver.observe(headerElement)
 
-	// =============================================== Load More Products = 2 function getProducts and loadProducts
-	async function getProducts(button) {
-		if (!button.classList.contains('_hold')) {
-			// якщо немає класу hold
-			button.classList.add('_hold') // додаємо клас hold
-			// це для позначення кнопки, щоб було ясно що її натиснули
-			const file = 'files/products.json' // отримуємо шлях, тут має бути адреса до сервера з бази
-			let response = await fetch(file, {
-				// GET запрос за допомогою fetch в response
-				method: 'GET',
-			})
-			if (response.ok) {
-				// чи знайшли файл
-				let result = await response.json() // в змінну result підгружаємо json
-				loadProducts(result) // Відправляємо результата в майбутню функцію loadProducts
-				button.classList.remove('_hold') // прибираємо клас hold
-				button.remove() // видаляємо кнопку, тільки тут, бо це локально
-				// бо при повторному натисненні будуть підгрузатися ті самі файли
-			} else {
-				alert('Error') // інакше, коли немає файлу, то помилку показати
-			}
+	// ==================== Button Show More in section Products
+	// ==================== get
+	const products = document.querySelector('.products')
+	if (products) {
+		loadProducts()
+	}
+
+	async function loadProducts() {
+		const response = await fetch('files/products.json', {
+			method: 'GET',
+		})
+		if (response.ok) {
+			const responceResult = await response.json()
+			initProducts(responceResult)
+		} else {
+			alert('Error')
 		}
 	}
 
-	// =====================================================================================  loadProducts
-	function loadProducts(data) {
-		const productsItems = document.querySelector('.products__items') // обєкт, де отримуємо
-		data.products.forEach(item => {
-			// метод перебору forEach, кожен елемент масиву item
-			const productId = item.id // присвоюємо значення товару
-			const productUrl = item.url
-			const productImage = item.image
-			const productTitle = item.title
-			const productText = item.text
-			const productPrice = item.price
-			const productOldPrice = item.priceOld
-			const productShareUrl = item.shareUrl
-			const productLikeUrl = item.LikeUrl
-			const productLabels = item.labels
-			// тепер ці дані треба інтегрувати в HTML карточки товару
-			// HTML код картки товару, розібраний на частини JS
-			// Кожна частина присвоюється у змінну
-
-			// Відкриваючий і закриваючий тег article зі своїм id
-			let productTemplateStart = `<article data-pid="${productId}" class="products__item item-product">`
-			let productTemplateEnd = `</article>`
-
-			let productTempleteLabels = ''
-			if (productLabels) {
-				let productTempleteLabelsStart = `<div class="item-product__labels">`
-				let productTempleteLabelsEnd = `</div>`
-				let productTempleteLabelsContent = ''
-				productLabels.forEach(labelItem => {
-					productTempleteLabelsContent += `<div class="item-product__label item-product__label_${labelItem.type}">${labelItem.value}</div>`
-				})
-				productTempleteLabels += productTempleteLabelsStart
-				productTempleteLabels += productTempleteLabelsContent
-				productTempleteLabels += productTempleteLabelsEnd
-			}
-
-			let productTempleteImage = `
-		<a href="${productId}" class="item-product__image -ibg">
-			<img src="@img/products/${productImage}" alt="${productTitle}">
-		</a>
-		`
-			let productTempleteBodyStart = `<div class="item-product__body">`
-			let productTempleteBodyEnd = `</div>`
-
-			let productTempleteContent = `
-		<div class="item-product__content">
-			<h5 class="item-product__title">${productTitle}</h5>
-			<div class="item-product__text">${productText}</div>
-		</div>
-		`
-			let productTempletePrices = ''
-			let productTempletePricesStart = `<div class="item-product__prices">`
-			let productTempletePricesCurrent = `<div class="item-product__price">Rp ${productPrice}</div>`
-			let productTempletePricesOld = `<div class="item-product__price item-product__price_old">Rp ${productOldPrice}</div>`
-			let productTempletePricesEnd = `</div>`
-
-			productTempletePrices = productTempletePricesStart
-			productTempletePrices += productTempletePricesCurrent
-			// Якщо є стара ціна, то додаємо перевірку, інакше пропускаємо
-			if (productOldPrice) {
-				productTempletePrices += productTempletePricesOld
-			}
-			productTempletePrices += productTempletePricesEnd
-
-			let productTempleteActions = `
-		<div class="item-product__actions actions-product">
-			<div class="actions-product__body">
-				<a href="" class="actions-product__button button button_white">Add to cart</a>
-				<a href="${productShareUrl}" class="actions-product__link _icon-share">Share</a>
-				<a href="${productLikeUrl}" class="actions-product__link _icon-favorite">Like</a>
-			</div>							
-		</div>
-		`
-
-			// Збірка всіх підблоків карточки у Body
-			let productTempleteBody = ''
-			productTempleteBody += productTempleteBodyStart
-			productTempleteBody += productTempleteContent
-			productTempleteBody += productTempletePrices
-			productTempleteBody += productTempleteActions
-			productTempleteBody += productTempleteBodyEnd
-
-			// Збірка всієї карточки товару
-			let productTemplate = ''
-			productTemplate += productTemplateStart
-			productTemplate += productTempleteLabels
-			productTemplate += productTempleteImage
-			productTemplate += productTempleteBody
-			productTemplate += productTemplateEnd
-
-			// Виводимо нашу змінну в HTML
-			// beforeend - означає додати вкінець
-			productsItems.insertAdjacentElement('beforeend', productTemplate)
+	function initProducts(data) {
+		data.products.forEach(product => {
+			console.log(product.id)
 		})
 	}
+
+	// =============================================== Load More Products = 2 function getProducts and loadProducts
+	// async function getProducts(button) {
+	// 	if (!button.classList.contains('_hold')) {
+	// 		// якщо немає класу hold
+	// 		button.classList.add('_hold') // додаємо клас hold
+	// 		// це для позначення кнопки, щоб було ясно що її натиснули
+	// 		const file = 'files/products.json' // отримуємо шлях, тут має бути адреса до сервера з бази
+	// 		let response = await fetch(file, {
+	// 			// GET запрос за допомогою fetch в response
+	// 			method: 'GET',
+	// 		})
+	// 		if (response.ok) {
+	// 			// чи знайшли файл
+	// 			let result = await response.json() // в змінну result підгружаємо json
+	// 			loadProducts(result) // Відправляємо результата в майбутню функцію loadProducts
+	// 			button.classList.remove('_hold') // прибираємо клас hold
+	// 			button.remove() // видаляємо кнопку, тільки тут, бо це локально
+	// 			// бо при повторному натисненні будуть підгрузатися ті самі файли
+	// 		} else {
+	// 			alert('Error') // інакше, коли немає файлу, то помилку показати
+	// 		}
+	// 	}
+	// }
+
+	// =====================================================================================  loadProducts
+	// function loadProducts(data) {
+	// 	const productsItems = document.querySelector('.products__items') // обєкт, де отримуємо
+	// 	data.products.forEach(item => {
+	// 		// метод перебору forEach, кожен елемент масиву item
+	// 		const productId = item.id // присвоюємо значення товару
+	// 		const productUrl = item.url
+	// 		const productImage = item.image
+	// 		const productTitle = item.title
+	// 		const productText = item.text
+	// 		const productPrice = item.price
+	// 		const productOldPrice = item.priceOld
+	// 		const productShareUrl = item.shareUrl
+	// 		const productLikeUrl = item.LikeUrl
+	// 		const productLabels = item.labels
+	// 		// тепер ці дані треба інтегрувати в HTML карточки товару
+	// 		// HTML код картки товару, розібраний на частини JS
+	// 		// Кожна частина присвоюється у змінну
+
+	// 		// Відкриваючий і закриваючий тег article зі своїм id
+	// 		let productTemplateStart = `<article data-pid="${productId}" class="products__item item-product">`
+	// 		let productTemplateEnd = `</article>`
+
+	// 		let productTempleteLabels = ''
+	// 		if (productLabels) {
+	// 			let productTempleteLabelsStart = `<div class="item-product__labels">`
+	// 			let productTempleteLabelsEnd = `</div>`
+	// 			let productTempleteLabelsContent = ''
+	// 			productLabels.forEach(labelItem => {
+	// 				productTempleteLabelsContent += `<div class="item-product__label item-product__label_${labelItem.type}">${labelItem.value}</div>`
+	// 			})
+	// 			productTempleteLabels += productTempleteLabelsStart
+	// 			productTempleteLabels += productTempleteLabelsContent
+	// 			productTempleteLabels += productTempleteLabelsEnd
+	// 		}
+
+	// 		let productTempleteImage = `
+	// 	<a href="${productId}" class="item-product__image -ibg">
+	// 		<img src="@img/products/${productImage}" alt="${productTitle}">
+	// 	</a>
+	// 	`
+	// 		let productTempleteBodyStart = `<div class="item-product__body">`
+	// 		let productTempleteBodyEnd = `</div>`
+
+	// 		let productTempleteContent = `
+	// 	<div class="item-product__content">
+	// 		<h5 class="item-product__title">${productTitle}</h5>
+	// 		<div class="item-product__text">${productText}</div>
+	// 	</div>
+	// 	`
+	// 		let productTempletePrices = ''
+	// 		let productTempletePricesStart = `<div class="item-product__prices">`
+	// 		let productTempletePricesCurrent = `<div class="item-product__price">Rp ${productPrice}</div>`
+	// 		let productTempletePricesOld = `<div class="item-product__price item-product__price_old">Rp ${productOldPrice}</div>`
+	// 		let productTempletePricesEnd = `</div>`
+
+	// 		productTempletePrices = productTempletePricesStart
+	// 		productTempletePrices += productTempletePricesCurrent
+	// 		// Якщо є стара ціна, то додаємо перевірку, інакше пропускаємо
+	// 		if (productOldPrice) {
+	// 			productTempletePrices += productTempletePricesOld
+	// 		}
+	// 		productTempletePrices += productTempletePricesEnd
+
+	// 		let productTempleteActions = `
+	// 	<div class="item-product__actions actions-product">
+	// 		<div class="actions-product__body">
+	// 			<a href="" class="actions-product__button button button_white">Add to cart</a>
+	// 			<a href="${productShareUrl}" class="actions-product__link _icon-share">Share</a>
+	// 			<a href="${productLikeUrl}" class="actions-product__link _icon-favorite">Like</a>
+	// 		</div>
+	// 	</div>
+	// 	`
+
+	// 		// Збірка всіх підблоків карточки у Body
+	// 		let productTempleteBody = ''
+	// 		productTempleteBody += productTempleteBodyStart
+	// 		productTempleteBody += productTempleteContent
+	// 		productTempleteBody += productTempletePrices
+	// 		productTempleteBody += productTempleteActions
+	// 		productTempleteBody += productTempleteBodyEnd
+
+	// 		// Збірка всієї карточки товару
+	// 		let productTemplate = ''
+	// 		productTemplate += productTemplateStart
+	// 		productTemplate += productTempleteLabels
+	// 		productTemplate += productTempleteImage
+	// 		productTemplate += productTempleteBody
+	// 		productTemplate += productTemplateEnd
+
+	// 		// Виводимо нашу змінну в HTML
+	// 		// beforeend - означає додати вкінець
+	// 		productsItems.insertAdjacentElement('beforeend', productTemplate)
+	// 	})
+	// }
 
 	// Furniture gallery movie
 	const furniture = document.querySelector('.furniture__body')
@@ -219,9 +242,9 @@ window.onload = function () {
 		})
 	}
 }
-;('use strict')
 
 // =============================================================== SPOLLERS
+;('use strict')
 const spollersArray = document.querySelectorAll('[data-spollers]')
 if (spollersArray.length > 0) {
 	// Получение обычных слойлеров
