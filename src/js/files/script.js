@@ -48,7 +48,7 @@ window.onload = function () {
 	headerObserver.observe(headerElement)
 
 	// ==================== Button Show More in section Products
-	// ==================== get
+	// ==================== get data from json file
 	const products = document.querySelector('.products')
 	if (products) {
 		loadProducts()
@@ -192,7 +192,7 @@ window.onload = function () {
 	// 	})
 	// }
 
-	// Furniture gallery movie
+	// ==================== Furniture gallery movie
 	const furniture = document.querySelector('.furniture__body')
 	if (furniture && !isMobile.any()) {
 		const furnitureItems = document.querySelector('.furniture__items')
@@ -243,7 +243,7 @@ window.onload = function () {
 	}
 }
 
-// =============================================================== SPOLLERS
+// ==================== SPOLLERS
 ;('use strict')
 const spollersArray = document.querySelectorAll('[data-spollers]')
 if (spollersArray.length > 0) {
@@ -377,7 +377,7 @@ if (spollersArray.length > 0) {
 		}
 	}
 }
-// ======================================================================= SlideToggle
+// ====================  SlideToggle
 let _slideUp = (target, duration = 500) => {
 	if (!target.classList.contains('_slide')) {
 		target.classList.add('_slide')
