@@ -6,7 +6,7 @@
 			"title": "Grifo",
 			"text": "Night lamp",
 			"labels": "",
-			"image": "05.jpg",
+			"image": "img/products/05.jpg",
 			"price": "1.500.000",
 			"priceOld": "",
 			"shareUrl": "",
@@ -27,7 +27,7 @@
 					"value": "New"
 				}
 			],
-			"image": "06.jpg",
+			"image": "img/products/06.jpg",
 			"price": "150.000",
 			"priceOld": "",
 			"shareUrl": "",
@@ -44,7 +44,7 @@
 					"value": "-50%"
 				}
 			],
-			"image": "07.jpg",
+			"image": "img/products/07.jpg",
 			"price": "7.000.000",
 			"priceOld": "14.000.000",
 			"shareUrl": "",
@@ -61,7 +61,7 @@
 					"value": "New"
 				}
 			],
-			"image": "08.jpg",
+			"image": "img/products/08.jpg",
 			"price": "500.000",
 			"priceOld": "",
 			"shareUrl": "",
