@@ -1,11 +1,11 @@
-// Підключення функціоналу "Чертоги Фрілансера"
+// connection with functions.js
 import { isMobile } from './functions.js'
-// Підключення списку активних модулів
+// connection with active module
 import { removeClasses } from './functions.js'
 
+// actions click
 window.onload = function () {
 	document.addEventListener('click', documentActions)
-	// Actions (делегування подій click)
 	function documentActions(e) {
 		const targetElement = e.target
 		if (window.innerWidth > 768 && isMobile.any()) {
@@ -27,14 +27,7 @@ window.onload = function () {
 		) {
 			document.querySelector('.search-form').classList.remove('_active')
 		}
-		// =========================================  Відловити клік на кнопку Show more по класу products__more
-		// if (targetElement.classList.contains('products__more')) {
-		// 	// коли натиснули на кнопку
-		// 	getProducts(targetElement) // Відправити її в нову функцію getProducts
-		// 	e.preventDefault() // Щоб не перегружалася сторінка
-		// }
 	}
-
 	// ==================== Header Scroll
 	const headerElement = document.querySelector('.header')
 	const callback = function (entries, observer) {
@@ -46,31 +39,6 @@ window.onload = function () {
 	}
 	const headerObserver = new IntersectionObserver(callback)
 	headerObserver.observe(headerElement)
-
-	// ==================== Button Show More in section Products
-	// ==================== get data from json file
-	const products = document.querySelector('.products')
-	if (products) {
-		loadProducts()
-	}
-
-	async function loadProducts() {
-		const response = await fetch('files/products.json', {
-			method: 'GET',
-		})
-		if (response.ok) {
-			const responceResult = await response.json()
-			initProducts(responceResult)
-		} else {
-			alert('Error')
-		}
-	}
-
-	function initProducts(data) {
-		data.products.forEach(product => {
-			console.log(product.id)
-		})
-	}
 
 	// =============================================== Load More Products = 2 function getProducts and loadProducts
 	// async function getProducts(button) {
@@ -243,7 +211,87 @@ window.onload = function () {
 	}
 }
 
-// ==================== SPOLLERS
+// GET DATA FROM JSON AND BUTTON SHOW MORE
+// block check products__items
+const productItems = document.querySelector('.products__items')
+if (productItems) {
+	loadProductItems()
+}
+// get data from JSON file
+async function loadProductItems() {
+	const response = await fetch('files/products.json', {
+		method: 'GET',
+	})
+	if (response.ok) {
+		const responceResult = await response.json()
+		initProductItem(responceResult)
+	} else {
+		alert('Error')
+	}
+}
+// output 3 data from JSON file
+function initProductItem(data) {
+	for (let index = 0; index < 3; index++) {
+		const product = data.products[index]
+		buildProductItem(product)
+	}
+}
+// building product items from HTML template
+function buildProductItem(product) {
+	let productItemTemplate = ``
+	productItemTemplate += `<article data-pid="1" class="products__item item-product">`
+	if (product.labels) {
+		productItemTemplate += `<div class="item-product__labels">`
+		for (const tag in product.labels) {
+			productItemTemplate += `<div class="item-product__label item-product__label_${product.labels[tag]}">
+			${tag}
+		</div>`
+		}
+		productItemTemplate += `</div>`
+	}
+	product.image
+		? (productItemTemplate += `
+		<a href="" class="item-product__image -ibg">
+		<img src="${product.image}" alt="${product.title}" />
+		</a>`)
+		: null
+	productItemTemplate += `<div class="item-product__body">`
+	productItemTemplate += `
+	<div class="item-product__content">
+	<h5 class="item-product__title">${product.title}</h5>
+	<div class="item-product__text">${product.text}</div>
+	</div>`
+	productItemTemplate += `
+	<div class="item-product__prices">
+	<div class="item-product__price">Rp 2.500.000</div>
+	<div class="item-product__price item-product__price_old">
+	Rp 3.500.000
+	</div>
+	</div>
+	`
+	productItemTemplate += `
+	<div class="item-product__actions actions-product">
+	<div class="actions-product__body">
+	<a
+	href=""
+	class="actions-product__button button button_white"
+	>Add to cart</a
+	>
+	<a href="" class="actions-product__link _icon-share"
+	>Share</a
+	>
+	<a href="" class="actions-product__link _icon-favorite"
+	>Like</a
+	>
+	</div>
+	</div>
+	`
+	productItemTemplate += `</div>`
+	productItemTemplate += `</article>`
+	productItems.insertAdjacentHTML('beforeend', productItemTemplate)
+}
+
+// SPOLLERS
 ;('use strict')
 const spollersArray = document.querySelectorAll('[data-spollers]')
 if (spollersArray.length > 0) {
