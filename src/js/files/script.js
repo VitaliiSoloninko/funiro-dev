@@ -45,7 +45,9 @@ window.onload = function () {
 	// GET DATA FROM JSON AND BUILD HTML TEMPLATE
 	// block check products__items
 	const productItems = document.querySelector('.products__items')
-	let counter = 2
+	let data
+	let startProduct = 0
+	let endProduct = 2
 	if (productItems) {
 		loadProductItems()
 	}
@@ -56,15 +58,16 @@ window.onload = function () {
 		})
 		if (response.ok) {
 			const responceResult = await response.json()
-			initProductItem(responceResult, counter)
+			data = responceResult
+			initProductItem(data, startProduct, endProduct)
 		} else {
 			alert('Error')
 		}
 	}
 	// output 3 data from JSON file
 	// slice - cut array
-	function initProductItem(data, counter) {
-		const dataPart = data.products.slice(0, counter)
+	function initProductItem(data, startProduct, endProduct) {
+		const dataPart = data.products.slice(startProduct, endProduct)
 		dataPart.forEach(product => {
 			buildProductItem(product)
 		})
@@ -132,7 +135,7 @@ window.onload = function () {
 	function documentActions(e) {
 		const targetElement = e.target
 		if (targetElement.closest('.products__more')) {
-			initProductItem(data, 6)
+			initProductItem(data, startProduct, endProduct)
 			e.preventDefault()
 		}
 	}
