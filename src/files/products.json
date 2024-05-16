@@ -7,7 +7,7 @@
 			"text": "Night lamp",
 			"labels": "",
 			"image": "img/products/05.jpg",
-			"price": "1.500.000",
+			"price": "30",
 			"priceOld": "",
 			"shareUrl": "",
 			"likeUrl": ""
@@ -28,7 +28,7 @@
 				}
 			],
 			"image": "img/products/06.jpg",
-			"price": "150.000",
+			"price": "5",
 			"priceOld": "",
 			"shareUrl": "",
 			"likeUrl": ""
@@ -45,8 +45,8 @@
 				}
 			],
 			"image": "img/products/07.jpg",
-			"price": "7.000.000",
-			"priceOld": "14.000.000",
+			"price": "80",
+			"priceOld": "100",
 			"shareUrl": "",
 			"likeUrl": ""
 		},
@@ -62,7 +62,7 @@
 				}
 			],
 			"image": "img/products/08.jpg",
-			"price": "500.000",
+			"price": "8",
 			"priceOld": "",
 			"shareUrl": "",
 			"likeUrl": ""

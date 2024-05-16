@@ -3,7 +3,8 @@ import { isMobile } from './functions.js'
 // connection with active module
 import { removeClasses } from './functions.js'
 
-// actions click
+//===============================================================================================================================
+// actions click ???
 window.onload = function () {
 	document.addEventListener('click', documentActions)
 	function documentActions(e) {
@@ -211,7 +212,8 @@ window.onload = function () {
 	}
 }
 
-// GET DATA FROM JSON AND BUTTON SHOW MORE
+//===============================================================================================================================
+// GET DATA FROM JSON AND BUILD HTML TEMPLATE
 // block check products__items
 const productItems = document.querySelector('.products__items')
 if (productItems) {
@@ -231,7 +233,7 @@ async function loadProductItems() {
 }
 // output 3 data from JSON file
 function initProductItem(data) {
-	for (let index = 0; index < 3; index++) {
+	for (let index = 0; index < 2; index++) {
 		const product = data.products[index]
 		buildProductItem(product)
 	}
@@ -239,13 +241,15 @@ function initProductItem(data) {
 // building product items from HTML template
 function buildProductItem(product) {
 	let productItemTemplate = ``
-	productItemTemplate += `<article data-pid="1" class="products__item item-product">`
+	productItemTemplate += `<article data-pid="${product.id}" class="products__item item-product">`
+
 	if (product.labels) {
 		productItemTemplate += `<div class="item-product__labels">`
-		for (const tag in product.labels) {
-			productItemTemplate += `<div class="item-product__label item-product__label_${product.labels[tag]}">
-			${tag}
-		</div>`
+
+		for (const label in product.labels) {
+			productItemTemplate += `<div class="item-product__label item-product__label_${product.labels[label]}">
+			${label}`
+			productItemTemplate += `</div>`
 		}
 		productItemTemplate += `</div>`
 	}
@@ -257,40 +261,43 @@ function buildProductItem(product) {
 		: null
 	productItemTemplate += `<div class="item-product__body">`
 	productItemTemplate += `
-	<div class="item-product__content">
-	<h5 class="item-product__title">${product.title}</h5>
-	<div class="item-product__text">${product.text}</div>
-	</div>`
+		<div class="item-product__content">
+			<h5 class="item-product__title">${product.title}</h5>
+			<div class="item-product__text">${product.text}</div>
+		</div>`
 	productItemTemplate += `
-	<div class="item-product__prices">
-	<div class="item-product__price">Rp 2.500.000</div>
-	<div class="item-product__price item-product__price_old">
-	Rp 3.500.000
-	</div>
-	</div>
+		<div class="item-product__prices">
+			<div class="item-product__price">$ ${product.price}</div>
+			<div class="item-product__price item-product__price_old">
+			</div>
+		</div>
 	`
 	productItemTemplate += `
-	<div class="item-product__actions actions-product">
-	<div class="actions-product__body">
-	<a
-	href=""
-	class="actions-product__button button button_white"
-	>Add to cart</a
-	>
-	<a href="" class="actions-product__link _icon-share"
-	>Share</a
-	>
-	<a href="" class="actions-product__link _icon-favorite"
-	>Like</a
-	>
-	</div>
-	</div>
+		<div class="item-product__actions actions-product">
+			<div class="actions-product__body">
+				<a
+				href=""
+				class="actions-product__button button button_white"
+				>Add to cart</a
+				>
+				<a href="" class="actions-product__link _icon-share"
+				>Share</a
+				>
+				<a href="" class="actions-product__link _icon-favorite"
+				>Like</a
+				>
+			</div>
+		</div>
 	`
 	productItemTemplate += `</div>`
 	productItemTemplate += `</article>`
 	productItems.insertAdjacentHTML('beforeend', productItemTemplate)
 }
 
+//===============================================================================================================================
+// BUTTON SHOW MORE
+
+//===============================================================================================================================
 // SPOLLERS
 ;('use strict')
 const spollersArray = document.querySelectorAll('[data-spollers]')
@@ -490,7 +497,7 @@ let _slideToggle = (target, duration = 500) => {
 		return _slideUp(target, duration)
 	}
 }
-//========================================================================================================================================================
+//===============================================================================================================================
 /*
 Для родителя слойлеров пишем атрибут data-spollers
 Для заголовков слойлеров пишем атрибут data-spoller
