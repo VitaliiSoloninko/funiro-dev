@@ -62,11 +62,12 @@ window.onload = function () {
 		}
 	}
 	// output 3 data from JSON file
+	// slice - cut array
 	function initProductItem(data, counter) {
-		for (let index = 0; index < counter; index++) {
-			const product = data.products[index]
+		const dataPart = data.products.slice(0, counter)
+		dataPart.forEach(product => {
 			buildProductItem(product)
-		}
+		})
 	}
 	// building product items from HTML template
 	function buildProductItem(product) {
@@ -130,9 +131,8 @@ window.onload = function () {
 
 	function documentActions(e) {
 		const targetElement = e.target
-
 		if (targetElement.closest('.products__more')) {
-			console.log('123')
+			initProductItem(data, 6)
 			e.preventDefault()
 		}
 	}
