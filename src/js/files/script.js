@@ -71,6 +71,7 @@ window.onload = function () {
 		dataPart.forEach(product => {
 			buildProductItem(product)
 		})
+		viewMore()
 	}
 	// building product items from HTML template
 	function buildProductItem(product) {
@@ -129,12 +130,24 @@ window.onload = function () {
 	}
 
 	//===============================================================================================================================
-	// BUTTON SHOW MORE
+	// BUTTON SHOW MORE HIDE, when all download
+	function viewMore() {
+		const dataProductsLength = data.products.length
+		const currentProducts = document.querySelectorAll('.item-product').length
+		const viewMore = document.querySelector('.products__more')
+		currentProducts < dataProductsLength
+			? (viewMore.hidden = false)
+			: (viewMore.hidden = true)
+	}
+
+	// BUTTON SHOW MORE, no work
 	document.addEventListener('click', documentActions)
 
 	function documentActions(e) {
 		const targetElement = e.target
 		if (targetElement.closest('.products__more')) {
+			startProduct = document.querySelectorAll('.item-product').length
+			endProduct = startProduct + 2
 			initProductItem(data, startProduct, endProduct)
 			e.preventDefault()
 		}
