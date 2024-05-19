@@ -1,6 +1,78 @@
 {
 	"products": [
 		{
+			"id": 1,
+			"url": "#",
+			"title": "Sylherine",
+			"text": "Stylish cafe chair",
+			"labels": [
+				{
+					"type": "sale",
+					"value": "-30%"
+				},
+				{
+					"type": "new",
+					"value": "New"
+				}
+			],
+			"image": "img/products/01.jpg",
+			"price": "50",
+			"priceOld": "$ 75",
+			"shareUrl": "",
+			"likeUrl": ""
+		},
+		{
+			"id": 2,
+			"url": "#",
+			"title": "Leviosa",
+			"text": "Stylish cafe chair",
+			"labels": [
+				{
+					"type": "new",
+					"value": "New"
+				}
+			],
+			"image": "img/products/02.jpg",
+			"price": "50",
+			"priceOld": "",
+			"shareUrl": "",
+			"likeUrl": ""
+		},
+		{
+			"id": 3,
+			"url": "#",
+			"title": "Lolito",
+			"text": "Luxury big sofa",
+			"labels": [
+				{
+					"type": "sale",
+					"value": "-50%"
+				}
+			],
+			"image": "img/products/03.jpg",
+			"price": "800",
+			"priceOld": "$ 1600",
+			"shareUrl": "",
+			"likeUrl": ""
+		},
+		{
+			"id": 4,
+			"url": "#",
+			"title": "Respira",
+			"text": "Minimalist fan",
+			"labels": [
+				{
+					"type": "new",
+					"value": "New"
+				}
+			],
+			"image": "img/products/04.jpg",
+			"price": "15",
+			"priceOld": "",
+			"shareUrl": "",
+			"likeUrl": ""
+		},
+		{
 			"id": 5,
 			"url": "#",
 			"title": "Grifo",

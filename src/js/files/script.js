@@ -80,30 +80,30 @@ window.onload = function () {
 
 		if (product.labels) {
 			productItemTemplate += `<div class="item-product__labels">`
-
-			for (const label in product.labels) {
-				productItemTemplate += `<div class="item-product__label item-product__label_${product.labels[label]}">
-			${label}`
-				productItemTemplate += `</div>`
-			}
+			product.labels.forEach(label => {
+				productItemTemplate += `<div class="item-product__label item-product__label_${label.type}">${label.value}</div>`
+			})
 			productItemTemplate += `</div>`
 		}
+
 		product.image
 			? (productItemTemplate += `
 		<a href="" class="item-product__image -ibg">
 		<img src="${product.image}" alt="${product.title}" />
 		</a>`)
 			: null
+
 		productItemTemplate += `<div class="item-product__body">`
 		productItemTemplate += `
 		<div class="item-product__content">
 			<h5 class="item-product__title">${product.title}</h5>
 			<div class="item-product__text">${product.text}</div>
 		</div>`
+
 		productItemTemplate += `
 		<div class="item-product__prices">
 			<div class="item-product__price">$ ${product.price}</div>
-			<div class="item-product__price item-product__price_old">
+			<div class="item-product__price item-product__price_old">${product.priceOld}
 			</div>
 		</div>
 	`
@@ -140,9 +140,8 @@ window.onload = function () {
 			: (viewMore.hidden = true)
 	}
 
-	// BUTTON SHOW MORE, no work
+	// BUTTON SHOW MORE
 	document.addEventListener('click', documentActions)
-
 	function documentActions(e) {
 		const targetElement = e.target
 		if (targetElement.closest('.products__more')) {
